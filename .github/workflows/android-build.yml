@@ -3,7 +3,7 @@ name: Build APK
 on:
   push:
     branches:
-      - main  # 监听main分支
+      - main  # 监听 main 分支
   pull_request:
     branches:
       - main
@@ -22,7 +22,7 @@ jobs:
         java-version: '17'
 
     - name: Cache Gradle dependencies
-      uses: actions/cache@v2
+      uses: actions/cache@v3  # 更新为 v3
       with:
         path: ~/.gradle
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
@@ -33,7 +33,7 @@ jobs:
       run: ./gradlew assembleDebug  # 使用 assembleDebug
 
     - name: Upload APK
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # 更新为 v3
       with:
         name: apk
         path: app/build/outputs/apk/debug/app-debug.apk
