@@ -22,7 +22,7 @@ jobs:
         java-version: '17'
 
     - name: Cache Gradle dependencies
-      uses: actions/cache@v3  # 保持为v3，因为这是有效的最新版本
+      uses: actions/cache@v3  # 保持为v3
       with:
         path: ~/.gradle
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
@@ -36,7 +36,4 @@ jobs:
       uses: actions/upload-artifact@v4  # 更新为 v4
       with:
         name: apk
-        path: app/build/outputs/apk/debug/app-debug.apk
-      with:
-        name: apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: app/build/outputs/apk/debug/app-debug.apk  # 只保留这部分
